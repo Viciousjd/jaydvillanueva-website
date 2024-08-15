@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Unit Assembly Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #gameContainer {
+            width: 900px;
+            height: 600px;
+            position: relative;
+            background-color: #333;
+            border: 2px solid #000;
+            box-shadow: 0 0 10px #000;
+        }
+        .component {
+            position: absolute;
+            cursor: grab;
+            background-color: #777;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        /* Component Shapes */
+        #cpu { top: 50px; left: 750px; width: 100px; height: 100px; }
+        #gpu { top: 200px; left: 750px; width: 100px; height: 150px; }
+        #ram { top: 400px; left: 750px; width: 40px; height: 150px; }
+        #psu { top: 50px; left: 50px; width: 100px; height: 100px; }
+        #hdd { top: 250px; left: 50px; width: 100px; height: 100px; }
+        #motherboard { top: 50px; left: 650px; width: 70px; height: 150px; }
+        #fan { top: 350px; left: 650px; width: 80px; height: 80px; }
+        #optical-drive { top: 450px; left: 50px; width: 120px; height: 50px; }
+
+        /* Outlines for correct placement */
+        .outline {
+            position: absolute;
+            border: 2px dashed #fff;
+        }
+        #cpu-outline { top: 200px; left: 300px; width: 100px; height: 100px; }
+        #gpu-outline { top: 250px; left: 400px; width: 100px; height: 150px; }
+        #ram-outline { top: 50px; left: 500px; width: 40px; height: 150px; }
+        #psu-outline { top: 500px; left: 100px; width: 100px; height: 100px; }
+        #hdd-outline { top: 400px; left: 600px; width: 100px; height: 100px; }
+        #motherboard-outline { top: 100px; left: 200px; width: 200px; height: 200px; }
+        #fan-outline { top: 320px; left: 500px; width: 80px; height: 80px; }
+        #optical-drive-outline { top: 450px; left: 300px; width: 120px; height: 50px; }
+
+        #instructions {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+        }
+
+        #timer {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            font-size: 18px;
+        }
+
+        #score {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            color: white;
+            font-size: 18px;
+        }
+
+        #finishButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #congratsMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="instructions">Drag and drop the components into the correct positions. Finish before time runs out!</div>
+        
+        <!-- Timer and Score -->
+        <div id="timer">Time: 30s</div>
+        <div id="score">Score: 0</div>
+
+        <!-- Outlines -->
+        <div id="cpu-outline" class="outline"></div>
+        <div id="gpu-outline" class="outline"></div>
+        <div id="ram-outline" class="outline"></div>
+        <div id="psu-outline" class="outline"></div>
+        <div id="hdd-outline" class="outline"></div>
+        <div id="motherboard-outline" class="outline"></div>
+        <div id="fan-outline" class="outline"></div>
+        <div id="optical-drive-outline" class="outline"></div>
+
+        <!-- Components -->
+        <div id="cpu" class="component"></div>
+        <div id="gpu" class="component"></div>
+        <div id="ram" class="component"></div>
+        <div id="psu" class="component"></div>
+        <div id="hdd" class="component"></div>
+        <div id="motherboard" class="component"></div>
+        <div id="fan" class="component"></div>
+        <div id="optical-drive" class="component"></div>
+
+        <!-- Finish Button -->
+        <button id="finishButton">Finish</button>
+        
+        <!-- Congrats Message -->
+        <div id="congratsMessage">Congratulations! You assembled the system unit!</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
